@@ -21,10 +21,24 @@
     width: 50%;
     margin: auto;
 }
+.forecast-container{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
 
 .search-bar{
     padding: 5px;
 }
 .app-name{
     padding: 5px;
+}
+.forecast-card{
+    width: 200px;
+    height: 200px;
+    margin-right: 10px;
+}
+.text-day{
+    padding: 5px;
+    text-align: center;
 }
