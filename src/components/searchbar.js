@@ -3,13 +3,14 @@ import axios from 'axios';
 
 class SearchBar extends React.Component{
 
-    constructor(props){
-        super(props);
-    }
-    state = {term : ''}
+    state = {
+            term : '',
+            geo: null
+        }
 
     onInputChange = (event) => {
         this.setState({term: event.target.value});
+
     }
 
     onLocationSubmit = (event) => {
@@ -21,8 +22,9 @@ class SearchBar extends React.Component{
             key: '771ef6164a8a4b479fef1925108e2a48'}
 
             }).then((res)=>{
-                console.log(res);
-            })
+                this.setState({geo: res.data.results[0].geometry});
+                this.props.onLocationSubmit(this.state.geo);
+            });
 
 
     }
