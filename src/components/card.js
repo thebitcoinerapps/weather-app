@@ -24,9 +24,34 @@ const styles = {
   },
 };
 
+
 function SimpleCard(props) {
   const { classes } = props;
+  if(props.searchedTerm !== '' && props.ge0Data !== null){
+    console.log(props.geoData);
+    return(
+      <Card className={classes.card}>
+      <CardContent>
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          Weather for
+        </Typography>
+        <Typography variant="h5" component="h2">
+          {props.searchedTerm}
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+          {props.geoData.daily.summary}
+        </Typography>
+        <Typography component="p">
+          Time zone: {props.geoData.timezone}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
 
+    );
+  }
   return (
     <Card className={classes.card}>
       <CardContent>
@@ -34,10 +59,9 @@ function SimpleCard(props) {
           Weather for
         </Typography>
         <Typography variant="h5" component="h2">
-            Warsaw
+          {props.searchedTerm}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          temp
         </Typography>
         <Typography component="p">
           Mostly cloudy

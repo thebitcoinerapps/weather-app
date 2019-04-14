@@ -19,27 +19,27 @@ class Forecast extends React.Component{
             <Card className="forecast-card">
             <h4 className="text-day">{this.convertTime(forecastData.data.daily.data[0].time)}</h4>
             <h3 className="text-summary">{forecastData.data.daily.data[0].summary}</h3>
-            <h4 className="text-day">{`${Math.round((forecastData.data.daily.data[0].temperatureHigh-32)/1.8)} C`}</h4>
+            <h4 className="text-day">{`${Math.round((forecastData.data.daily.data[0].temperatureHigh))} C`}</h4>
                 
             </Card>
 
             <Card className="forecast-card">
             <h4 className="text-day">{this.convertTime(forecastData.data.daily.data[1].time)}</h4>
             <h3 className="text-summary">{forecastData.data.daily.data[1].summary}</h3>
-            <h4 className="text-day">{`${Math.round((forecastData.data.daily.data[1].temperatureHigh-32)/1.8)} C`}</h4>
+            <h4 className="text-day">{`${Math.round((forecastData.data.daily.data[1].temperatureHigh))} C`}</h4>
             </Card>
 
             <Card className="forecast-card">
             <h4 className="text-day">{this.convertTime(forecastData.data.daily.data[2].time)}</h4>
             <h3 className="text-summary">{forecastData.data.daily.data[2].summary}</h3>
-            <h4 className="text-day">{`${Math.round((forecastData.data.daily.data[2].temperatureHigh-32)/1.8)} C`}</h4>
+            <h4 className="text-day">{`${Math.round((forecastData.data.daily.data[2].temperatureHigh))} C`}</h4>
                 
             </Card>
 
             <Card className="forecast-card">
             <h4 className="text-day">{this.convertTime(forecastData.data.daily.data[3].time)}</h4>
             <h3 className="text-summary">{forecastData.data.daily.data[3].summary}</h3>
-            <h4 className="text-day">{`${Math.round((forecastData.data.daily.data[3].temperatureHigh-32)/1.8)} C`}</h4>
+            <h4 className="text-day">{`${Math.round((forecastData.data.daily.data[3].temperatureHigh))} C`}</h4>
                 
             </Card>
             

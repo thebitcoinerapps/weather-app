@@ -7,20 +7,19 @@ import Spinner from './components/spinner';
 
 class App  extends React.Component{
     
-    state = {geo: null, forecast: null};
+    state = {geo: null, forecast: null, term: ''};
     isOn = false;
 
-    updateGeo = (location)=>{
+    updateGeo = (location, term)=>{
         this.isOn = true;
-        this.setState();
+
+        this.setState({term: term});
 
         this.setState({geo: location});
         const geoCode = (Object.values(this.state.geo).join());
 
         weatherAPI(geoCode).then((res)=>{
             this.setState({forecast: res.data});
-            //this.render();
-            
         });
 
     }
@@ -28,8 +27,10 @@ class App  extends React.Component{
 
     render(){
         let forecastComp = null;
+        let card = null;
         if(this.state.forecast !== null){
-            forecastComp = <Forecast data={this.state.forecast}/>;
+            forecastComp = <Forecast data={this.state.forecast} term={this.state.term}/>;
+            card = <SimpleCard geoData={this.state.forecast} searchedTerm={this.state.term} />
         }else if(this.isOn){
             this.isOn = false;
             forecastComp = <Spinner />;
@@ -40,7 +41,7 @@ class App  extends React.Component{
             <div className="main-container">
             <h2 className="app-name">The Weather App</h2>
             <SearchBar onLocationSubmit={this.updateGeo}/>
-            <SimpleCard />
+            {card}
             <h2 className="app-name">Forecast</h2>
             {forecastComp}
             </div>

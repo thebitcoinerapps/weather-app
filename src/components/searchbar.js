@@ -2,7 +2,10 @@ import React from 'react';
 import axios from 'axios';
 
 class SearchBar extends React.Component{
-
+    constructor(props) {
+        super(props);
+        this.myRef = React.createRef();
+      }
     state = {
             term : '',
             geo: null
@@ -23,7 +26,7 @@ class SearchBar extends React.Component{
 
             }).then((res)=>{
                 this.setState({geo: res.data.results[0].geometry});
-                this.props.onLocationSubmit(this.state.geo);
+                this.props.onLocationSubmit(this.state.geo, this.state.term);
             });
 
 
