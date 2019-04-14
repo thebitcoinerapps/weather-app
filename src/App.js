@@ -3,19 +3,24 @@ import SimpleCard from './components/card';
 import SearchBar from './components/searchbar';
 import weatherAPI from './components/darkweatherapi';
 import Forecast from './components/forecast';
+import Spinner from './components/spinner';
 
 class App  extends React.Component{
     
     state = {geo: null, forecast: null};
+    isOn = false;
 
     updateGeo = (location)=>{
+        this.isOn = true;
+        this.setState();
+
         this.setState({geo: location});
         const geoCode = (Object.values(this.state.geo).join());
 
         weatherAPI(geoCode).then((res)=>{
             this.setState({forecast: res.data});
-            console.log(this.state.forecast);
-            console.log(this.state.geo);
+            //this.render();
+            
         });
 
     }
@@ -25,7 +30,10 @@ class App  extends React.Component{
         let forecastComp = null;
         if(this.state.forecast !== null){
             forecastComp = <Forecast data={this.state.forecast}/>;
-        }else{}
+        }else if(this.isOn){
+            this.isOn = false;
+            forecastComp = <Spinner />;
+        }
 
         return(
             <div className="global-container">
@@ -39,7 +47,7 @@ class App  extends React.Component{
             </div>
         );
        
-    }l
+    }
 }
 
 export default App;
